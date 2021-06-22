@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import json
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,13 +24,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
+if DEBUG is None:
+    DEBUG = True
+else:
+    DEBUG = json.loads(DEBUG.lower())
+
 if DEBUG:
     SECRET_KEY = 'django-insecure-4t%7%lbhs9-!s$w&4julgh#x#!&v4@@uip#76qz224=$k@16g^'
 else:
     from .local_settings import SECRET_KEY
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -79,16 +85,24 @@ WSGI_APPLICATION = 'taipower.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("DBNAME"),
-        'USER': os.getenv("DBUSER"),
-        'PASSWORD': os.getenv("DBPASS"),
-        'HOST': os.getenv("DBHOST"),
-        'PORT': os.getenv("DBPORT"),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv("DBNAME"),
+            'USER': os.getenv("DBUSER"),
+            'PASSWORD': os.getenv("DBPASS"),
+            'HOST': os.getenv("DBHOST"),
+            'PORT': os.getenv("DBPORT"),
+        }
+    }
 
 
 # Password validation
@@ -140,7 +154,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
 }

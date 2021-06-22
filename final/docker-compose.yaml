@@ -42,7 +42,8 @@ services:
         - shared
         - nginx_net
         environment:
-          MIGRATION_APP: analysis
+          #MIGRATION_APP: analysis
+          DEBUG: "false"
           DBHOST: taipower_pg
           DBPORT: 5432
           DBNAME: taipower

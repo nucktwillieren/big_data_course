@@ -6,6 +6,7 @@ from .models import *
 
 
 class PowerPlantSuppportHistorySerializer(serializers.ModelSerializer):
+
     class Meta:
         model = PowerPlantSuppportHistory
         fields = '__all__'
