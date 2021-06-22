@@ -1,0 +1,24 @@
+django
+djangorestframework
+markdown  
+django-filter
+django-cors-headers
+pytz
+psycopg2
+python-dateutil
+channels
+redis
+channels-redis
+celery
+uwsgi
+pyopenssl
+pycrypto
+base58
+numpy # Too big to download.
+#scipy # Too big to download.
+Pillow # Too big to download.
+pandas 
+#mysqlclient # I dont use this recently
+#mysql-connector-python  # I dont use this recently
+matplotlib # Too big to download.
+plotly

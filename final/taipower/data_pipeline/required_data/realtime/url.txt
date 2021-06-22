@@ -1,0 +1,2 @@
+realtime data: https://data.taipower.com.tw/opendata01/apply/file/d006001/001.txt
+prediction: https://www.taipower.com.tw/tc/page.aspx?mid=209&cid=357&cchk=2fd2f12d-f009-43c5-9a41-150e39c214b9

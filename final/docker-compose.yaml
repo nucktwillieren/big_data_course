@@ -1,0 +1,62 @@
+version: '3.3'
+services:
+    taipower_nginx:
+        container_name: taipower_nginx
+        build: ./nginx_kernel
+        restart: unless-stopped
+        volumes:    
+        - taipower_data:/taipower       
+        depends_on:
+        - taipower_web
+        ports: 
+        - "8099:80"
+        networks:
+        - shared
+        - nginx_net
+
+    taipower_pg:
+        image: postgres
+        container_name: taipower_pg
+        environment:
+        - POSTGRES_PASSWORD=taipower001
+        - POSTGRES_DB=taipower
+        - POSTGRES_USER=taipower
+        volumes:
+        - taipower_pg_data:/var/lib/postgresql/data/        
+        restart: unless-stopped
+        networks:
+        - shared
+        - nginx_net
+
+    taipower_web:
+        container_name: taipower_web
+        build: ./taipower  
+        working_dir: /taipower
+        restart: unless-stopped
+        command: bash entrypoint.sh  
+        volumes:
+        - taipower_data:/taipower
+        depends_on:
+        - taipower_pg
+        networks:
+        - shared
+        - nginx_net
+        environment:
+          MIGRATION_APP: analysis
+          DBHOST: taipower_pg
+          DBPORT: 5432
+          DBNAME: taipower
+          DBUSER: taipower
+          DBPASS: taipower001
+
+volumes:
+    taipower_data: 
+    taipower_pg_data:
+
+networks:
+    shared: 
+        external:
+            name: shared
+    nginx_net: 
+        external:
+            name: nginx_net

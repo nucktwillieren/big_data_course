@@ -1,0 +1,72 @@
+[
+    {
+        "success": true,
+        "target_name": "bear",
+        "target_type": "a",
+        "user_click_type": "animal",
+        "reaction_time": 1.287183600012213
+    },
+    {
+        "success": true,
+        "target_name": "eagle",
+        "target_type": "a",
+        "user_click_type": "animal",
+        "reaction_time": 2.787898200098425
+    },
+    {
+        "success": true,
+        "target_name": "dog",
+        "target_type": "a",
+        "user_click_type": "animal",
+        "reaction_time": 0.9447947998996824
+    },
+    {
+        "success": true,
+        "target_name": "dog",
+        "target_type": "a",
+        "user_click_type": "animal",
+        "reaction_time": 0.9000947999302298
+    },
+    {
+        "success": true,
+        "target_name": "cow",
+        "target_type": "a",
+        "user_click_type": "animal",
+        "reaction_time": 0.7001823000609875
+    },
+    {
+        "success": true,
+        "target_name": "dragonfruit",
+        "target_type": "f",
+        "user_click_type": "fruit",
+        "reaction_time": 0.8731099998112768
+    },
+    {
+        "success": true,
+        "target_name": "ant",
+        "target_type": "a",
+        "user_click_type": "animal",
+        "reaction_time": 0.6332696001045406
+    },
+    {
+        "success": true,
+        "target_name": "cherry",
+        "target_type": "f",
+        "user_click_type": "fruit",
+        "reaction_time": 2.0978683000430465
+    },
+    {
+        "success": true,
+        "target_name": "eagle",
+        "target_type": "a",
+        "user_click_type": "animal",
+        "reaction_time": 0.733783399919048
+    },
+    {
+        "success": true,
+        "target_name": "apple",
+        "target_type": "f",
+        "user_click_type": "fruit",
+        "reaction_time": 2.0761927999556065
+    }
+]

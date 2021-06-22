@@ -1,0 +1,8 @@
+jpgs/
+fonts/
+data/
+__pycache__/
+*.rar
+
+local_settings.*
+*.sqlite3
