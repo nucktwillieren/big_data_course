@@ -36,7 +36,14 @@ def latest_three_year_peak_backup_overlap():
     try:
         plot_div = opy(fig,
                        output_type='div')
+        return plot_div
     except Exception as e:
         print(e)
 
-    return plot_div
+    return False
+
+
+def powerplant_graph():
+    df = pd.DataFrame(list(PowerPlantSuppportHistory.objects.all().values()))
+    fig = go.Figure()
+    fig.add_trace(go.Histogram(x=df[df[""]]))
