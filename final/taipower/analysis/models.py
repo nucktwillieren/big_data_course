@@ -17,7 +17,7 @@ class PeakSupportDemandHistory(models.Model):
     backup_volume_rate = models.FloatField()
     industry = models.FloatField()
     domestic = models.FloatField()
-    powerplant = models.ManyToManyField(PowerPlantSuppportHistory)
+    powerplant = models.ManyToManyField(PowerPlantSuppportHistory, blank=True)
 
 
 class PeakBackupHistory(models.Model):
