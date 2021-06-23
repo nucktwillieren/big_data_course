@@ -17,43 +17,6 @@
 系統架構：
 ![](https://i.imgur.com/9Y74MDL.png)
 
-### 期末學習的項目
-- [x] Pandas
-- [x] Matplotlib/Seaborn -> Plotly
-- [x] WebScrapping(requests)
-- [ ] Feature Engineering
-- [ ] Natural Language Processing
-- [ ] Linear Regression
-- [ ] Random Forest
-- [ ] SVM
-- [ ] Model Validation
-- [ ] Hyper-Parameters
-### 可分析項目與可執行項目
-- [ ] Auto Sync From Opendata
-- [x] Auto Sync To Database
-- [x] 三年尖峰備轉容量疊圖分析
-- [x] Web Site
-- [x] 用電度數與電費、戶數Correlation分析(HeatMap)
-- [ ] 2016 - 2020各月行業比例(Bar Chart)
-- [ ] 2014電費與他國比較(Bar Chart)
-- [ ] 電費調整歷史曲線(Line Chart)
-- [ ] 各電廠每日發電配比(Stacked Histogram)
-- [ ] 電力流向地圖(Geographic)
-- [ ] 利用2020整年的資料訓練結果Fit至2021年預估發電量與附載量，看準度
-  - Goals: 移動的Window(Time Series)預測下一天
-  - Data: 採下方Data Table的
-  - Models:
-    - [ ] SVM Regression
-    - [ ] Linear Regression
-    - [ ] Random Forest Regression
-    - [ ] LSTM(課外)
-  - Problems:
-    - [ ] 移動的Window(Time Series)怎麼放進Model?
-- [ ] 爬取輿料 + JeiBa
-### 困難的點(打勾是已解決)
-- [x] 資料前處理與Pipeline設計
-- [ ] 對ML不那麼熟悉
-- [ ] 時間QQ
 
 ## Data Table
 ### 過去電力供需資訊
@@ -103,6 +66,44 @@
 - 供電警戒(橘燈): 備轉容量率小於6%
 - 限電警戒(紅燈): 備轉容量90萬千瓦以下
 - 限電準備(黑燈): 備轉容量50萬千瓦以下
+
+### 期末學習的項目
+- [x] Pandas
+- [x] Matplotlib/Seaborn -> Plotly
+- [x] WebScrapping(requests)
+- [ ] Feature Engineering
+- [ ] Natural Language Processing
+- [ ] Linear Regression
+- [ ] Random Forest
+- [ ] SVM
+- [ ] Model Validation
+- [ ] Hyper-Parameters
+### 可分析項目與可執行項目
+- [ ] Auto Sync From Opendata
+- [x] Auto Sync To Database
+- [x] 三年尖峰備轉容量疊圖分析
+- [x] Web Site
+- [x] 用電度數與電費、戶數Correlation分析(HeatMap)
+- [ ] 2016 - 2020各月行業比例(Bar Chart)
+- [ ] 2014電費與他國比較(Bar Chart)
+- [ ] 電費調整歷史曲線(Line Chart)
+- [ ] 各電廠每日發電配比(Stacked Histogram)
+- [ ] 電力流向地圖(Geographic)
+- [ ] 利用2020整年的資料訓練結果Fit至2021年預估發電量與附載量，看準度
+  - Goals: 移動的Window(Time Series)預測下一天
+  - Data: 採下方Data Table的
+  - Models:
+    - [ ] SVM Regression
+    - [ ] Linear Regression
+    - [ ] Random Forest Regression
+    - [ ] LSTM(課外)
+  - Problems:
+    - [ ] 移動的Window(Time Series)怎麼放進Model?
+- [ ] 爬取輿料 + JeiBa
+### 困難的點(打勾是已解決)
+- [x] 資料前處理與Pipeline設計
+- [ ] 對ML不那麼熟悉
+- [ ] 時間QQ
 
 ## Future Work
 ### 天氣影響用電量
