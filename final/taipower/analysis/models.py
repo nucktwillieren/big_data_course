@@ -33,6 +33,7 @@ class YearlyPeakBackupHistory(models.Model):
 
 
 class DailyPeakBackup(models.Model):
+    # ready
     time = models.DateTimeField(unique=True, db_index=True)
     backup_volume = models.FloatField()
     backup_volume_rate = models.FloatField()
