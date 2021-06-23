@@ -3,13 +3,13 @@ from rest_framework.routers import DefaultRouter
 from .views import *
 
 router = DefaultRouter()
-router.register(r'powerplant/history',
+router.register(r'powerplant',
                 PowerPlantSuppportHistoryViewSet, basename='analysis')
-router.register(r'peak/history',
+router.register(r'peak/detail',
                 PeakSupportDemandHistoryViewSet, basename='analysis')
-router.register(r'peak/yearly/history',
+router.register(r'peak/yearly',
                 YearlyPeakBackupHistoryViewSet, basename='analysis')
-router.register(r'peak/now', PeakBackupThisYearViewSet,
+router.register(r'peak/daily', DailyPeakBackupViewSet,
                 basename='analysis')
 router.register(r'usage/history',
                 UsageStatisticHistoryViewSet, basename='analysis')

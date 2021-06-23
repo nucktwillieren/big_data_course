@@ -16,6 +16,35 @@ def daily_latest_three_year_peak_backup_rate_source(path):
     return df
 
 
+@declare.datasource(inputs=[daily_peak_backup_rate_2021.csv])
+def daily_peak_backup_rate_2021_source(path):
+    df = pd.read_csv(path)
+    return df
+
+
+@declare.generator(
+    inputs=[
+        daily_latest_three_year_peak_backup_rate_source,
+        daily_peak_backup_rate_2021_source
+    ]
+)
+def daily_peak_backup_merging(input_one, input_two):
+    df_one = input_one()
+    df_two = input_two()
+    df = pd.concat([df_one, df_two])
+
+    df.columns = [
+        "time",
+        "backup_volume",
+        "backup_volume_rate"
+    ]
+
+    df.time = pd.to_datetime(df.time, format="%Y/%m/%d")
+    df.time = df.time.dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+    return df
+
+
 @declare.generator()
 @declare.datasource(inputs=[daily_support_and_demand_2020.csv])
 def daily_peak_powerplant_2020_source(path):
@@ -79,9 +108,13 @@ def daily_support_and_demand_2020_source(path):
     return df
 
 
+@declare.generator()
 @declare.datasource(inputs=[yearly_peak_usage_and_backup_rate.csv])
 def yearly_peak_usage_and_backup_rate_source(path):
-    df = pd.read_csv(path)
+    df = pd.read_csv(path, usecols=[
+        '年度', '尖峰負載(MW)', '備用容量率(％)'
+    ])
+    print(df)
 
     df.columns = [
         "time",
@@ -93,12 +126,6 @@ def yearly_peak_usage_and_backup_rate_source(path):
     df.time = df.time.dt.strftime('%Y-%m-%dT%H:%M:%SZ')
     print(df)
 
-    return df
-
-
-@declare.datasource(inputs=[daily_peak_backup_rate_2021.csv])
-def daily_peak_backup_rate_2021_source(path):
-    df = pd.read_csv(path)
     return df
 
 
@@ -131,31 +158,34 @@ def json_uploader(stream, url):
     for df in stream:
         client = req.session()
         json_d = df.to_dict("records")
-        for i in range(0, len(json_d), 10):
+        for i in range(0, len(json_d), 100):
             try:
-                resp = req.post(url, json=json_d[i:i+10])
+                resp = req.post(url, json=json_d[i:i+100])
                 print(resp.content)
-            except Exception as e:
-                print(e)
+            except IndexError as e:
+                try:
+                    resp = req.post(url, json=json_d[i:])
+                except Exception as a:
+                    print(a)
 
         yield True
 
 
 def main():
-    pipe = compose.Pipeline(
+    pipe0 = compose.Pipeline(
         steps=[
             ("source", daily_peak_powerplant_2020_source, {}),
             ("test", json_uploader,
-             {"url": base_url + "powerplant/history/"})
+             {"url": base_url + "powerplant/"})
         ]
     )
-    pipe.run()
+    pipe0.run()
 
     pipe1 = compose.Pipeline(
         steps=[
             ("source", daily_support_and_demand_2020_source, {}),
             ("test", json_uploader,
-                {"url": base_url + "peak/history/"})
+                {"url": base_url + "peak/detail/"})
         ]
     )
     pipe1.run()
@@ -164,10 +194,19 @@ def main():
         steps=[
             ("source", yearly_peak_usage_and_backup_rate_source, {}),
             ("test", json_uploader,
-                {"url": base_url + "peak/yearly/history/"})
+                {"url": base_url + "peak/yearly/"})
         ]
     )
     pipe2.run()
+
+    pipe3 = compose.Pipeline(
+        steps=[
+            ("source", daily_peak_backup_merging, {}),
+            ("test", json_uploader,
+             {"url": base_url + "peak/daily/"})
+        ]
+    )
+    pipe3.run()
 
 
 if __name__ == '__main__':

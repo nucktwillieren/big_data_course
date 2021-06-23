@@ -1,5 +1,9 @@
-{% if graph %}
+Example Graph {% if example_graph %}
 <div style="width:600;height:500">
-    {{ graph|safe }}
+    {{ example_graph|safe }}
+</div>
+{% endif %} Overlap Graph {% if overlap_graph %}
+<div style="width:600;height:500">
+    {{ overlap_graph|safe }}
 </div>
 {% endif %}

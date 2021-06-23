@@ -29,8 +29,6 @@ daily_support_and_demand_2020 = File(
     "./required_data/backup/history/daily_support_and_demand_2020.csv")
 yearly_peak_usage_and_backup_rate = File(
     "./required_data/backup/history/yearly_peak_usage_and_backup_rate.csv")
-flow = File("./required_data/flow/flow.json")
-
 daily_peak_backup_rate_2021 = File(
     "./required_data/peak/history/daily_backup_rate_2021.csv")
 
@@ -40,3 +38,5 @@ yearly_neighbor_price_comparison_2014 = File(
     "./required_data/price/neighborhood/yearly_comparison_2014.csv")
 yearly_neighbor_price_comparison_2019 = File(
     "./required_data/price/neighborhood/yearly_comparison_2019.csv")
+
+flow = File("./required_data/flow/flow.json")

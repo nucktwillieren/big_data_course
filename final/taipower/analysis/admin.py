@@ -5,7 +5,7 @@ from .models import *
 admin.site.register(PowerPlantSuppportHistory)
 admin.site.register(YearlyPeakBackupHistory)
 admin.site.register(PeakSupportDemandHistory)
-admin.site.register(PeakBackupThisYear)
+admin.site.register(DailyPeakBackup)
 admin.site.register(UsageStatisticHistory)
 admin.site.register(UsageByCategory)
 admin.site.register(Neighborhood)

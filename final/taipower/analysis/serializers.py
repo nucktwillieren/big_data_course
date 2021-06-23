@@ -24,9 +24,9 @@ class PeakSupportDemandHistorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PeakBackupThisYearSerializer(serializers.ModelSerializer):
+class DailyPeakBackupSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PeakBackupThisYear
+        model = DailyPeakBackup
         fields = '__all__'
 
 

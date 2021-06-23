@@ -4,6 +4,7 @@ from django.db import models
 
 
 class PowerPlantSuppportHistory(models.Model):
+    # ready
     time = models.DateTimeField(db_index=True)
     name = models.CharField(max_length=30)
     support = models.FloatField()
@@ -13,6 +14,7 @@ class PowerPlantSuppportHistory(models.Model):
 
 
 class PeakSupportDemandHistory(models.Model):
+    # ready
     time = models.DateTimeField(unique=True, db_index=True)
     peak_support = models.FloatField()
     peak_demand = models.FloatField()
@@ -24,12 +26,13 @@ class PeakSupportDemandHistory(models.Model):
 
 
 class YearlyPeakBackupHistory(models.Model):
+    # ready
     time = models.DateTimeField(unique=True, db_index=True)
     backup_volume = models.FloatField()
     backup_volume_rate = models.FloatField()
 
 
-class PeakBackupThisYear(models.Model):
+class DailyPeakBackup(models.Model):
     time = models.DateTimeField(unique=True, db_index=True)
     backup_volume = models.FloatField()
     backup_volume_rate = models.FloatField()

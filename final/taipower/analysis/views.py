@@ -41,9 +41,9 @@ class PeakSupportDemandHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSe
     serializer_class = PeakSupportDemandHistorySerializer
 
 
-class PeakBackupThisYearViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = PeakBackupThisYear.objects.all()[:10]
-    serializer_class = PeakBackupThisYearSerializer
+class DailyPeakBackupViewSet(CreateListModelMixin, viewsets.ModelViewSet):
+    queryset = DailyPeakBackup.objects.all()[:10]
+    serializer_class = DailyPeakBackupSerializer
 
 
 class UsageStatisticHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
@@ -72,6 +72,7 @@ class AnalysisPage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['graph'] = example_graph()
+        context['example_graph'] = example_graph()
+        context['overlap_graph'] = latest_three_year_peak_backup_overlap()
 
         return context
