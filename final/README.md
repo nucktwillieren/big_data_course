@@ -96,6 +96,7 @@
     - [ ] SVM Regression
     - [ ] Linear Regression
     - [ ] Random Forest Regression
+    - [ ] Cluster
     - [ ] LSTM(課外)
   - Problems:
     - [ ] 移動的Window(Time Series)怎麼放進Model?
