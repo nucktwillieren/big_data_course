@@ -5,10 +5,10 @@ from .views import *
 router = DefaultRouter()
 router.register(r'powerplant/history',
                 PowerPlantSuppportHistoryViewSet, basename='analysis')
-router.register(r'backup/history',
-                PeakBackupHistoryViewSet, basename='analysis')
 router.register(r'peak/history',
                 PeakSupportDemandHistoryViewSet, basename='analysis')
+router.register(r'peak/yearly/history',
+                YearlyPeakBackupHistoryViewSet, basename='analysis')
 router.register(r'peak/now', PeakBackupThisYearViewSet,
                 basename='analysis')
 router.register(r'usage/history',

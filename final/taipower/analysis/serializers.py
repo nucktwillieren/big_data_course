@@ -12,9 +12,9 @@ class PowerPlantSuppportHistorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PeakBackupHistorySerializer(serializers.ModelSerializer):
+class YearlyPeakBackupHistorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = PeakBackupHistory
+        model = YearlyPeakBackupHistory
         fields = '__all__'
 
 

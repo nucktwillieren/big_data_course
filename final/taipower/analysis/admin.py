@@ -3,7 +3,7 @@ from .models import *
 # Register your models here.
 
 admin.site.register(PowerPlantSuppportHistory)
-admin.site.register(PeakBackupHistory)
+admin.site.register(YearlyPeakBackupHistory)
 admin.site.register(PeakSupportDemandHistory)
 admin.site.register(PeakBackupThisYear)
 admin.site.register(UsageStatisticHistory)

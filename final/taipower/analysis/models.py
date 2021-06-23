@@ -4,9 +4,12 @@ from django.db import models
 
 
 class PowerPlantSuppportHistory(models.Model):
-    time = models.DateTimeField(unique=True, db_index=True)
+    time = models.DateTimeField(db_index=True)
     name = models.CharField(max_length=30)
     support = models.FloatField()
+
+    class Meta:
+        unique_together = ('time', 'name',)
 
 
 class PeakSupportDemandHistory(models.Model):
@@ -20,7 +23,7 @@ class PeakSupportDemandHistory(models.Model):
     powerplant = models.ManyToManyField(PowerPlantSuppportHistory, blank=True)
 
 
-class PeakBackupHistory(models.Model):
+class YearlyPeakBackupHistory(models.Model):
     time = models.DateTimeField(unique=True, db_index=True)
     backup_volume = models.FloatField()
     backup_volume_rate = models.FloatField()

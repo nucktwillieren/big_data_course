@@ -27,42 +27,42 @@ class CreateListModelMixin(object):
 
 
 class PowerPlantSuppportHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = PowerPlantSuppportHistory.objects.all()
+    queryset = PowerPlantSuppportHistory.objects.all()[:100]
     serializer_class = PowerPlantSuppportHistorySerializer
 
 
-class PeakBackupHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = PeakBackupHistory.objects.all()
-    serializer_class = PeakBackupHistorySerializer
+class YearlyPeakBackupHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
+    queryset = YearlyPeakBackupHistory.objects.all()[:100]
+    serializer_class = YearlyPeakBackupHistorySerializer
 
 
 class PeakSupportDemandHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = PeakSupportDemandHistory.objects.all()
+    queryset = PeakSupportDemandHistory.objects.all()[:100]
     serializer_class = PeakSupportDemandHistorySerializer
 
 
 class PeakBackupThisYearViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = PeakBackupThisYear.objects.all()
+    queryset = PeakBackupThisYear.objects.all()[:10]
     serializer_class = PeakBackupThisYearSerializer
 
 
 class UsageStatisticHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = UsageStatisticHistory.objects.all()
+    queryset = UsageStatisticHistory.objects.all()[:10]
     serializer_class = UsageStatisticHistorySerializer
 
 
 class UsageByCategoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = UsageByCategory.objects.all()
+    queryset = UsageByCategory.objects.all()[:10]
     serializer_class = UsageByCategorySerializer
 
 
 class NeighborhoodViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = Neighborhood.objects.all()
+    queryset = Neighborhood.objects.all()[:10]
     serializer_class = NeighborhoodSerializer
 
 
 class PriceAdjustHistoryViewSet(CreateListModelMixin, viewsets.ModelViewSet):
-    queryset = PriceAdjustHistory.objects.all()
+    queryset = PriceAdjustHistory.objects.all()[:10]
     serializer_class = PriceAdjustHistorySerializer
 
 
